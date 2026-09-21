@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --color-navy: #06101c;
+  --color-navy-2: #0a1830;
+  --color-navy-3: #102444;
+  --color-steel: #1a3a5c;
+  --color-gold: #c9a84c;
+  --color-gold-2: #e0c37a;
+  --color-moss: #6e8f72;
+  --color-moss-2: #8fb392;
+  --color-ice: #e8eef4;
+  --color-ice-2: #c5d3e0;
+  --color-mute: #8aa0b5;
+  --color-line: rgb(201 168 76 / 22%);
+  --color-warn: #c4a35a;
+  --color-danger: #b45a4a;
+  --color-paper: #f4efe2;
+  --color-ink: #1a1712;
+  --color-urn: #05080d;
+  --color-lcd: #9aa48a;
+  --color-lcd-ink: #1c2418;
+  --color-lcd-cell: #c5ccb4;
+  --color-lcd-photo: #2a3324;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+
+  --shadow-border: 0 0 0 1px rgb(232 238 244 / 8%);
+  --shadow-border-hover: 0 0 0 1px rgb(201 168 76 / 38%);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+  }
+
+  body {
+    background: var(--color-navy);
+    color: var(--color-ice);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    font-family: var(--font-serif);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: rgb(201 168 76 / 35%);
+    color: var(--color-ice);
+  }
+}
+
+@layer components {
+  .ambient-wash {
+    background:
+      radial-gradient(900px 420px at 80% -8%, rgb(201 168 76 / 10%), transparent 55%),
+      radial-gradient(700px 380px at 0% 100%, rgb(110 143 114 / 12%), transparent 50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  @page {
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  a[href]::after {
+    content: none !important;
+  }
+}
